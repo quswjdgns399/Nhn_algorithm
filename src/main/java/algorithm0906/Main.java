@@ -34,17 +34,48 @@ public class Main {
 
     // solution
     public static int solution(int a, int b) {
-        return reverse(reverse(a) + reverse(b));
+//        return reverse(reverse(a) + reverse(b));
+//        return reverseArithmetic((reverseArithmetic(a)) + reverseArithmetic(b));
+        return reverseRecursion(reverseRecursion(a) + reverseRecursion(b));
     }
 
+    // use String
     static int reverse(int n) {
         char[] arr = String.valueOf(n).toCharArray();
         StringBuilder sb = new StringBuilder();
 
-        for (int i = arr.length - 1; i > -1; i--) {
+        for (int i = arr.length - 1; i >= 0; i--) {
             sb.append(arr[i]);
 
         }
-        return Integer.reverse(Integer.parseInt(sb.toString()));
+        return Integer.parseInt(sb.toString());
+    }
+
+    // use Arithmetic
+
+    static int reverseArithmetic(int n) {
+        int reverse = 0;
+        while (n != 0) {
+            int reminder = n % 10;
+            reverse = reverse * 10 + reminder;
+            n = n / 10;
+        }
+        return reverse;
+    }
+
+
+    static int reverseRecursion(int n) {
+        return reverseRecursionModule(n, 0);
+    }
+
+    static int reverseRecursionModule(int n, int reverse) {
+        if (n < 10) {
+            return reverse * 10 + n;
+        } else {
+            int reminder = n % 10;
+            reverse = reverse * 10 + reminder;
+            return reverseRecursionModule(n / 10, reverse);
+        }
     }
 }
+
