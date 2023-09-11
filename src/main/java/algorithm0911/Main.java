@@ -1,8 +1,5 @@
 package algorithm0911;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
 
     private static final int[] TEST_CASES = {
@@ -28,52 +25,76 @@ public class Main {
     };
 
     public static void main(String[] args) {
-        for (int i = 0; i < TEST_CASES.length; i++) {
-            System.out.println("Test Case " + (i + 1) + " = " + test(TEST_CASES[i], Test_CASES_RESULT[i]));
-        }
 
-        System.out.printf("정답률 = %.3f%%", (correct / TEST_CASES.length * 100));
+//        for (int i = 0; i < TEST_CASES.length; i++) {
+//            System.out.println("Test Case " + (i + 1) + " = " + test(TEST_CASES[i], Test_CASES_RESULT[i]));
+//        }
+//
+//        System.out.printf("정답률 = %.3f%%", (correct / TEST_CASES.length * 100));
+
+        StringBuilder sb = new StringBuilder();
+        System.out.println(solution(60, 2, sb));
     }
 
     private static double correct = 0;
 
-    private static boolean test(int input, String result) {
-        if (solution(input).equals(result)) {
-            correct++;
-            return true;
-        }
+//    private static boolean test(int input, String result) {
+//        if (solution(input).equals(result)) {
+//            correct++;
+//            return true;
+//        }
+//
+//        return false;
+//    }
 
-        return false;
-    }
+//    public static String solution(int num) {
+//        int origin = num;
+//
+//        List<Integer> list = new ArrayList<>();
+//        StringBuilder sb = new StringBuilder();
+//
+//        if (num == 1) {
+//            list.add(1);
+//        }
+//
+//        for (int i = 2; i <= num; i++) {
+//            while (num % i == 0) {
+//                list.add(i);
+//                num /= i;
+//            }
+//        }
+//
+//        for (int i = 0; i < list.size(); i++) {
+//
+//            sb.append(list.get(i));
+//
+//            if (i < list.size() - 1) {
+//                sb.append(" * ");
+//            }
+//        }
+//        sb.append(" = ").append(origin);
+//
+//        return sb.toString();
+//    }
 
-    public static String solution(int num) {
-        int origin = num;
 
-        List<Integer> list = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
+    public static StringBuilder solution(int num, int i, StringBuilder sb) {
 
         if (num == 1) {
-            list.add(1);
+            sb.append(1);
+            return sb;
         }
 
-        for (int i = 2; i <= num; i++) {
-            while (num % i == 0) {
-                list.add(i);
-                num /= i;
-            }
+        if (num == i) {
+            sb.append(i);
+        } else if (num % i == 0) {
+            sb.append(i).append(" ");
+            solution(num / i, i, sb);
+        } else {
+            solution(num, i + 1, sb);
         }
 
-        for (int i = 0; i < list.size(); i++) {
-
-            sb.append(list.get(i));
-
-            if (i < list.size() - 1) {
-                sb.append(" * ");
-            }
-        }
-        sb.append(" = ").append(origin);
-
-        return sb.toString();
+        return sb;
     }
 
 }
