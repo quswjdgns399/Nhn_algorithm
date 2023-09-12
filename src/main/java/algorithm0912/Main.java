@@ -7,7 +7,7 @@ public class Main {
         System.out.println(solution(arr));
     }
 
-    public static int compare(int num1, int num2) {
+    public static int greatestCommonDivisor(int num1, int num2) {
         int result = 0;
         int minValue = Math.min(num1, num2);
         for (int i = 1; i <= minValue; i++) {
@@ -24,7 +24,7 @@ public class Main {
 
         for (int i = 0; i < input.length; i++) {
             for (int j = i + 1; j < input.length; j++) {
-                int result = compare(input[i], input[j]);
+                int result = greatestCommonDivisor(input[i], input[j]);
                 if (max < result) {
                     max = result;
                 }
