@@ -52,14 +52,9 @@ public class Main {
 
             String str = num.toPlainString();
 
-            int count = 0;
-            for (int i = 0; i < str.length(); i++) {
-
-                if (str.charAt(i) == '.') {
-                    count = str.length() - i;
-                    break;
-                }
-            }
+            int count;
+            int dotindex = str.indexOf(".");
+            count = str.length() - dotindex - 1;
             return count;
         }
 
@@ -68,7 +63,7 @@ public class Main {
 
             int decimalNumber = getDecimalNumber(number);
 
-            int numerator = (int) (Double.parseDouble(input) * Math.pow(10, decimalNumber));
+            int numerator = (int) (number.doubleValue() * Math.pow(10, decimalNumber));
             double denominator = Math.pow(10, decimalNumber);
 
 
@@ -83,7 +78,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String result = Fraction.solution("23456.98765");
+        String result = Fraction.solution("-0.75");
         System.out.println(result.toString());
     }
 
