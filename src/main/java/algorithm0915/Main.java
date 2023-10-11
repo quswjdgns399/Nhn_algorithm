@@ -16,9 +16,8 @@ public class Main {
 
         switch (number) {
             case 0:
-                return 1;
             case 1:
-                return number;
+                return 1;
             default:
                 return number * factorial(number - 1);
         }
