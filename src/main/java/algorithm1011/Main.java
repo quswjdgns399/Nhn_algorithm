@@ -45,7 +45,6 @@ class Main {
             }
         }
 
-        // 결과문 출력
         System.out.println(sb);
     }
 }
